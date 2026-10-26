@@ -4,325 +4,857 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#09070e">
-  <meta name="description" content="Discover EBR Interactive Entertainment, an independent game development studio creating interactive worlds and visual stories.">
-  <title>EBR Interactive Entertainment | Official Website</title>
+  <meta name="theme-color" content="#090711">
+  <meta name="description" content="EBRO Interactive Entertainment is an independent game studio creating original interactive visual stories and imaginative digital experiences.">
+
+  <title>EBRO Interactive Entertainment | Your Story. Our Universe.</title>
 
   <style>
     :root {
-      --bg: #09070e;
-      --panel: #15101e;
-      --purple: #b58aff;
-      --bright: #dbc5ff;
-      --white: #f8f4ff;
-      --muted: #b8adc8;
-      --border: #352544;
+      --background: #090711;
+      --surface: #120e1e;
+      --surface-light: #1a1328;
+      --purple: #a875ff;
+      --purple-light: #d8c1ff;
+      --silver: #f1edf8;
+      --muted: #aaa2bb;
+      --border: rgba(185, 145, 255, .22);
+      --width: 1120px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
     body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--white);
+      background: var(--background);
+      color: var(--silver);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    a { color: inherit; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--purple-light);
+      outline-offset: 4px;
+    }
 
     .container {
-      width: min(1100px, 90%);
-      margin: auto;
+      width: min(90%, var(--width));
+      margin-inline: auto;
+    }
+
+    .announcement {
+      padding: 8px 15px;
+      background: #130d21;
+      border-bottom: 1px solid var(--border);
+      color: var(--purple-light);
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(9, 7, 17, .94);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      background: #0d0913;
     }
 
-    nav {
-      min-height: 84px;
+    .nav {
+      min-height: 80px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
     }
 
     .brand {
-      color: var(--bright);
-      text-decoration: none;
-      font-family: Georgia, serif;
-      font-size: 25px;
-      letter-spacing: 5px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
     }
 
-    .brand small {
+    .brand-mark {
+      width: 49px;
+      height: 49px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--purple);
+      border-radius: 12px;
+      background: linear-gradient(145deg, #34204f, #100b19);
+      box-shadow: 0 0 25px rgba(168, 117, 255, .12);
+      font-size: 16px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .brand-name {
       display: block;
-      font-family: Arial, sans-serif;
-      font-size: 9px;
+      font-size: 13px;
+      font-weight: 800;
       letter-spacing: 2px;
+    }
+
+    .brand-subtitle {
+      display: block;
       color: var(--muted);
+      font-size: 8px;
+      letter-spacing: 1.4px;
     }
 
     .nav-links {
       display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 23px;
+      font-size: 12px;
+      color: #d5cee2;
     }
 
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 13px;
+    .nav-links a:hover,
+    .footer-links a:hover {
+      color: var(--purple-light);
     }
 
-    .nav-links a:hover { color: var(--bright); }
+    .nav-contact {
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+    }
 
     .hero {
-      min-height: 520px;
-      padding: 100px 0 90px;
+      min-height: 650px;
       display: grid;
-      place-items: center;
-      text-align: center;
-      background:
-        radial-gradient(ellipse at 50% 35%,
-          #422366 0%, #21122f 24%,
-          #0d0914 57%, var(--bg) 78%);
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 45px;
+      padding-block: 85px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 350px;
+      height: 350px;
+      left: -200px;
+      top: 80px;
+      background: #7028b8;
+      filter: blur(150px);
+      opacity: .2;
     }
 
     .eyebrow {
-      color: var(--purple);
-      font-size: 11px;
-      letter-spacing: 4px;
+      color: var(--purple-light);
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 3px;
       text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     h1 {
-      max-width: 850px;
-      margin: 20px auto;
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
-      font-size: clamp(42px, 8vw, 76px);
-      line-height: 1.12;
+      font-size: clamp(43px, 6vw, 73px);
+      line-height: 1.05;
+      letter-spacing: -3px;
+      margin-bottom: 24px;
     }
 
-    .hero p {
-      max-width: 620px;
-      margin: 0 auto 30px;
+    .gradient-text {
+      background: linear-gradient(100deg, #fff, #d2b5ff, #9871e8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      max-width: 510px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 15px;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
     }
 
     .button {
-      display: inline-block;
-      padding: 13px 24px;
-      border: 1px solid var(--purple);
-      border-radius: 4px;
-      background: #8b52c9;
-      color: white;
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 1px;
-    }
-
-    .button:hover { background: #a36ce2; }
-
-    section { padding: 76px 0; }
-
-    .section-title {
-      margin: 0 0 10px;
-      font-family: Georgia, serif;
-      font-size: 34px;
-      font-weight: 400;
-    }
-
-    .section-intro {
-      margin: 0 0 30px;
-      color: var(--muted);
-    }
-
-    .project {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 30px;
+      min-height: 47px;
+      display: inline-flex;
+      justify-content: center;
       align-items: center;
-      padding: 28px;
+      padding: 12px 20px;
       border: 1px solid var(--border);
-      border-radius: 12px;
-      background: linear-gradient(130deg, #191125, #0e0a14);
+      border-radius: 7px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: .5px;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(110deg, #d7bdff, #a875ff);
+      color: #10091c;
+      border-color: transparent;
+    }
+
+    .button-secondary {
+      background: rgba(255,255,255,.025);
+    }
+
+    .hero-art {
+      min-height: 400px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background:
+        radial-gradient(ellipse at center, rgba(112,57,177,.28), transparent 60%),
+        linear-gradient(145deg, #1b132a, #090711 75%);
+    }
+
+    .orbit {
+      position: absolute;
+      width: 290px;
+      height: 290px;
+      border: 1px solid rgba(206,174,255,.32);
+      border-radius: 50%;
+      transform: rotate(-25deg) scaleY(.55);
+    }
+
+    .orbit-two {
+      width: 370px;
+      height: 370px;
+      transform: rotate(35deg) scaleY(.55);
+      border-color: rgba(206,174,255,.16);
+    }
+
+    .hero-emblem {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-emblem strong {
+      display: block;
+      font-size: clamp(65px, 9vw, 108px);
+      line-height: 1.2;
+      letter-spacing: -9px;
+      padding-right: 9px;
+      background: linear-gradient(135deg, #fff, #c5bad8, #9871e8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 24px rgba(168,117,255,.2));
+    }
+
+    .hero-emblem span {
+      display: block;
+      color: var(--purple-light);
+      font-size: 10px;
+      letter-spacing: 4px;
+      margin-top: 12px;
+    }
+
+    .art-caption {
+      position: absolute;
+      bottom: 20px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    section {
+      padding-block: 85px;
+    }
+
+    .section-heading {
+      max-width: 690px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(31px, 4vw, 45px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--surface);
     }
 
     .project-art {
-      min-height: 240px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      border-radius: 8px;
+      min-height: 390px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       background:
-        radial-gradient(ellipse at 50% 45%,
-          #7548a4, #2b1741 40%,
-          #100b19 75%);
+        radial-gradient(ellipse at center, rgba(131,66,211,.34), transparent 58%),
+        linear-gradient(140deg, #211432, #0b0812);
+      border-right: 1px solid var(--border);
     }
 
-    .project-art span {
-      font-family: Georgia, serif;
-      font-size: clamp(26px, 5vw, 43px);
+    .project-label {
+      align-self: flex-start;
+      color: var(--purple-light);
+      font-size: 9px;
       letter-spacing: 3px;
-      color: var(--bright);
-      text-shadow: 0 0 25px #c6a0ff;
+      text-transform: uppercase;
     }
 
-    .project h3 {
-      font-family: Georgia, serif;
-      font-size: 29px;
-      font-weight: 400;
-      margin: 10px 0;
+    .project-logo {
+      text-align: center;
+      font-size: clamp(29px, 4vw, 46px);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -1px;
     }
 
-    .project p { color: var(--muted); }
+    .project-logo span {
+      display: block;
+      margin-top: 12px;
+      color: var(--purple-light);
+      font-size: 11px;
+      letter-spacing: 5px;
+    }
+
+    .project-art-note {
+      color: #b7a7ce;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+
+    .project-info {
+      align-self: center;
+      padding: 40px;
+    }
 
     .status {
       display: inline-block;
       padding: 5px 10px;
-      border: 1px solid #65468b;
-      border-radius: 20px;
-      color: var(--bright);
-      font-size: 11px;
+      border: 1px solid rgba(168,117,255,.4);
+      border-radius: 30px;
+      color: var(--purple-light);
+      font-size: 9px;
       letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
-    .about {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: #0e0a15;
+    .project-info h3 {
+      font-size: 29px;
+      line-height: 1.25;
+      margin-bottom: 16px;
     }
 
-    .about-copy {
-      max-width: 720px;
+    .project-info p {
       color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 22px;
     }
 
-    footer {
-      padding: 30px 0;
-      text-align: center;
+    .features {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 26px;
+      font-size: 12px;
+      color: #ddd4eb;
+    }
+
+    .features li::before {
+      content: "✦";
+      color: var(--purple);
+      margin-right: 10px;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 10px;
+      margin-top: 12px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .about-card {
+      padding: 27px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(145deg, #171124, #0d0a15);
+    }
+
+    .about-icon {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 19px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--purple-light);
+      font-size: 20px;
+    }
+
+    .about-card h3 {
+      font-size: 16px;
+      margin-bottom: 9px;
+    }
+
+    .about-card p {
       color: var(--muted);
       font-size: 12px;
     }
 
-    footer a { color: var(--bright); }
+    .vision {
+      padding: 50px 30px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background:
+        radial-gradient(ellipse at center, rgba(112,53,181,.2), transparent 70%),
+        var(--surface);
+    }
 
-    @media (max-width: 650px) {
-      nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 20px 0;
+    .vision h2 {
+      font-size: clamp(30px, 4vw, 43px);
+      margin-bottom: 16px;
+    }
+
+    .vision p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-panel {
+      padding: 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+
+    .contact-panel h3 {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 30px 0;
+      background: #08060e;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-brand {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .footer-note,
+    .footer-links {
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 17px;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 72px;
       }
 
-      .nav-links { gap: 14px; }
+      .brand-mark {
+        width: 43px;
+        height: 43px;
+        font-size: 14px;
+      }
+
+      .brand-name {
+        font-size: 11px;
+        letter-spacing: 1px;
+      }
+
+      .brand-subtitle {
+        font-size: 7px;
+        letter-spacing: 1px;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 10px;
+      }
+
+      .nav-contact {
+        display: none;
+      }
 
       .hero {
-        min-height: 430px;
-        padding: 75px 0;
-      }
-
-      section { padding: 55px 0; }
-
-      .project {
         grid-template-columns: 1fr;
-        padding: 18px;
+        gap: 35px;
+        padding-block: 65px;
       }
 
-      .project-art { min-height: 190px; }
+      .hero-art {
+        min-height: 320px;
+      }
+
+      section {
+        padding-block: 65px;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-art {
+        min-height: 290px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .project-info {
+        padding: 28px 23px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-panel {
+        padding: 26px 22px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .nav {
+        gap: 8px;
+      }
+
+      .brand {
+        gap: 7px;
+      }
+
+      .brand-name {
+        font-size: 9px;
+      }
+
+      .brand-subtitle {
+        font-size: 6px;
+      }
+
+      .nav-links {
+        gap: 9px;
+        font-size: 9px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="announcement">
+    Independent Game Studio · Original Interactive Experiences
+  </div>
+
   <header>
-    <nav class="container">
-      <a class="brand" href="#home">
-        EBR
-        <small>INTERACTIVE ENTERTAINMENT</small>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="EBRO home">
+        <span class="brand-mark">EBRO</span>
+        <span>
+          <span class="brand-name">EBRO</span>
+          <span class="brand-subtitle">INTERACTIVE ENTERTAINMENT</span>
+        </span>
       </a>
 
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="#home">Home</a>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
-      </div>
-    </nav>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="container">
-        <div class="eyebrow">Independent Game Development Studio</div>
+    <section class="container hero" id="home">
+      <div>
+        <p class="eyebrow">Welcome to EBRO</p>
 
-        <h1>Your Story.<br>Our Universe.</h1>
+        <h1>
+          Your Story.<br>
+          <span class="gradient-text">Our Universe.</span>
+        </h1>
 
-        <p>
-          We create interactive worlds, unforgettable characters,
-          and visual stories shaped by your choices.
+        <p class="hero-description">
+          We are building imaginative interactive experiences where
+          stories, characters, choices and creativity come together.
+          Every universe begins with an idea.
         </p>
 
-        <a class="button" href="#projects">DISCOVER OUR PROJECTS</a>
+        <div class="actions">
+          <a class="button button-primary" href="#projects">
+            EXPLORE OUR PROJECT
+          </a>
+          <a class="button button-secondary" href="#about">
+            DISCOVER EBRO
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="EBRO company emblem">
+        <div class="orbit"></div>
+        <div class="orbit orbit-two"></div>
+
+        <div class="hero-emblem">
+          <strong>EBRO</strong>
+          <span>INTERACTIVE ENTERTAINMENT</span>
+        </div>
+
+        <div class="art-caption">Imagination without limits</div>
       </div>
     </section>
 
     <section id="projects">
       <div class="container">
-        <div class="eyebrow">Our creative universe</div>
-        <h2 class="section-title">Featured Project</h2>
-        <p class="section-intro">
-          Meet the first game experience in development.
-        </p>
+        <div class="section-heading">
+          <p class="eyebrow">Featured Project</p>
+          <h2>Worlds waiting to be discovered.</h2>
+          <p>
+            Meet our first featured project: an interactive visual
+            story game designed to bring characters and decisions to life.
+          </p>
+        </div>
 
-        <article class="project">
-          <div class="project-art" aria-label="EBR Universe concept artwork">
-            <span>EBR: UNIVERSE</span>
+        <article class="project-card">
+          <div class="project-art">
+            <div class="project-label">An EBRO Original</div>
+
+            <div class="project-logo">
+              EBR: UNIVERSE
+              <span>READ STORIES</span>
+            </div>
+
+            <div class="project-art-note">
+              YOUR CHOICES. YOUR JOURNEY.
+            </div>
           </div>
 
-          <div>
-            <span class="status">IN DEVELOPMENT</span>
+          <div class="project-info">
+            <span class="status">In Development</span>
+
             <h3>EBR: UNIVERSE</h3>
+
             <p>
-              An interactive visual storytelling game where
-              your choices shape relationships, trust, and the
-              direction of your story.
+              Enter a world of visual interactive storytelling.
+              Discover characters, experience cinematic scenes and
+              make choices that shape your journey through each story.
             </p>
-            <p>
-              Our first experience is READ STORIES, featuring
-              original characters and branching storylines.
+
+            <ul class="features">
+              <li>Interactive visual stories</li>
+              <li>Memorable characters and relationships</li>
+              <li>Choices and story progression</li>
+              <li>A growing universe of original narratives</li>
+            </ul>
+
+            <a class="button button-primary" href="#contact">
+              FOLLOW OUR JOURNEY
+            </a>
+
+            <p class="note">
+              The initial release is focused on READ STORIES.
+              More features are planned for future development.
             </p>
-            <span class="status">READ STORIES · FIRST RELEASE</span>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="about" id="about">
+    <section id="about">
       <div class="container">
-        <div class="eyebrow">Our vision</div>
-        <h2 class="section-title">Stories Without Limits</h2>
-        <p class="about-copy">
-          EBR Interactive Entertainment is an independent
-          game development studio founded by Elizabeth.
-          Our vision is to build original digital experiences,
-          immersive visual stories, and imaginative worlds,
-          using creative technology and AI-assisted tools.
-        </p>
+        <div class="section-heading">
+          <p class="eyebrow">Who We Are</p>
+          <h2>Creativity at the heart of every world.</h2>
+          <p>
+            EBRO Interactive Entertainment is an independent game
+            studio concept focused on original games, interactive
+            narratives and imaginative digital experiences.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card">
+            <div class="about-icon" aria-hidden="true">✧</div>
+            <h3>Original Worlds</h3>
+            <p>
+              We develop our own concepts, characters and fictional
+              universes with distinct identities and stories.
+            </p>
+          </article>
+
+          <article class="about-card">
+            <div class="about-icon" aria-hidden="true">◇</div>
+            <h3>Interactive Stories</h3>
+            <p>
+              We want players to feel involved in the narrative,
+              explore meaningful choices and experience stories
+              at their own pace.
+            </p>
+          </article>
+
+          <article class="about-card">
+            <div class="about-icon" aria-hidden="true">✦</div>
+            <h3>Creative Technology</h3>
+            <p>
+              We explore digital tools, including AI-assisted
+              workflows, to support the creative process and
+              develop new interactive experiences.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="vision">
+          <p class="eyebrow">Our Vision</p>
+          <h2>Every universe starts with a story.</h2>
+          <p>
+            Our vision is to build original interactive experiences
+            that invite people to explore new worlds, connect with
+            characters and discover the possibilities of imagination.
+            We are starting with one project and growing one step at a time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <p class="eyebrow">Stay Connected</p>
+            <h3>Follow the journey of EBRO.</h3>
+            <p>
+              Our first project is in development.
+              More information will be shared as it becomes available.
+            </p>
+          </div>
+
+          <!-- Add an official contact email here when one is ready. -->
+          <a class="button button-primary" href="#projects">
+            EXPLORE OUR PROJECT
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      <p>EBR Interactive Entertainment · Your Story. Our Universe.</p>
-      <p>Independent studio project · Wisconsin, USA</p>
-      <p>© <span id="year">2026</span> EBR. All rights reserved.</p>
+    <div class="container footer-content">
+      <div>
+        <div class="footer-brand">EBRO INTERACTIVE ENTERTAINMENT</div>
+        <div class="footer-note">Your Story. Our Universe.</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-note">
+        &copy; <span id="year"></span> EBRO Interactive Entertainment
+      </div>
     </div>
   </footer>
 
