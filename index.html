@@ -635,9 +635,125 @@
         transition: none !important;
       }
     }
+    .language-picker {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+  font-family: inherit;
+}
+
+#language-button {
+  background: #100c1b;
+  color: #e6d5ff;
+  border: 1px solid #8b5cf6;
+  border-radius: 10px;
+  padding: 10px 13px;
+  cursor: pointer;
+  font: inherit;
+}
+
+#language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 175px;
+  padding: 6px;
+  border: 1px solid #8b5cf6;
+  border-radius: 12px;
+  background: #100c1b;
+  box-shadow: 0 8px 28px #0008;
+}
+
+#language-menu[hidden] {
+  display: none;
+}
+
+#language-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  color: #f3efff;
+  background: transparent;
+  border: 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font: inherit;
+}
+
+#language-menu button:hover,
+#language-menu button:focus-visible {
+  background: #38205b;
+  outline: none;
+}
   </style>
 </head>
+<script>
+(() => {
+  const button = document.getElementById("language-button");
+  const menu = document.getElementById("language-menu");
 
+  if (!button || !menu) return;
+
+  const languages = {
+    es: { label: "🌐 ES", name: "Español" },
+    en: { label: "🌐 EN", name: "English" },
+    fr: { label: "🌐 FR", name: "Français" },
+    ko: { label: "🌐 KO", name: "한국어" },
+    de: { label: "🌐 DE", name: "Deutsch" },
+    tr: { label: "🌐 TR", name: "Türkçe" },
+    ru: { label: "🌐 RU", name: "Русский" }
+  };
+
+  function setLanguage(lang) {
+    if (!languages[lang]) return;
+
+    button.textContent = languages[lang].label + " ▾";
+    document.documentElement.lang = lang;
+
+    try {
+      localStorage.setItem("ebro-language", lang);
+    } catch (error) {
+      // El selector seguirá funcionando si el almacenamiento está bloqueado.
+    }
+
+    document.dispatchEvent(
+      new CustomEvent("ebro:languagechange", {
+        detail: { language: lang, name: languages[lang].name }
+      })
+    );
+
+    menu.hidden = true;
+    button.setAttribute("aria-expanded", "false");
+  }
+
+  button.addEventListener("click", () => {
+    menu.hidden = !menu.hidden;
+    button.setAttribute("aria-expanded", String(!menu.hidden));
+  });
+
+  menu.querySelectorAll("[data-lang]").forEach(item => {
+    item.addEventListener("click", () => {
+      setLanguage(item.dataset.lang);
+    });
+  });
+
+  document.addEventListener("click", event => {
+    if (!event.target.closest(".language-picker")) {
+      menu.hidden = true;
+      button.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  let savedLanguage = "es";
+
+  try {
+    savedLanguage = localStorage.getItem("ebro-language") || "es";
+  } catch (error) {}
+
+  setLanguage(savedLanguage);
+})();
+</script>
 <body>
   <div class="announcement">
     Independent Game Studio · Original Interactive Experiences
@@ -659,6 +775,25 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
+      <div class="language-picker">
+  <button
+    id="language-button"
+    type="button"
+    aria-expanded="false"
+    aria-controls="language-menu">
+    🌐 ES ▾
+  </button>
+
+  <div id="language-menu" hidden>
+    <button type="button" data-lang="es">🇪🇸 Español</button>
+    <button type="button" data-lang="en">🇬🇧 English</button>
+    <button type="button" data-lang="fr">🇫🇷 Français</button>
+    <button type="button" data-lang="ko">🇰🇷 한국어</button>
+    <button type="button" data-lang="de">🇩🇪 Deutsch</button>
+    <button type="button" data-lang="tr">🇹🇷 Türkçe</button>
+    <button type="button" data-lang="ru">🇷🇺 Русский</button>
+  </div>
+</div>
     </div>
   </header>
 
