@@ -5,12 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="theme-color" content="#090711"/>
 <meta name="description" content="EBRO Interactive Entertainment is an independent game studio creating original interactive visual stories and imaginative digital experiences."/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://yensyelizabeth2005-boop.github.io/ebr-interactive-entertainment/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="EBRO Interactive Entertainment | Your Story. Our Universe."/>
+<meta property="og:description" content="Discover original interactive stories and imaginative digital experiences from EBRO Interactive Entertainment."/>
+<meta property="og:url" content="https://yensyelizabeth2005-boop.github.io/ebr-interactive-entertainment/"/>
+<meta name="twitter:card" content="summary"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090711'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='19' font-weight='bold' fill='%23d8c1ff'%3EEBRO%3C/text%3E%3C/svg%3E"/>
 <title>EBRO Interactive Entertainment | Your Story. Our Universe.</title>
+<style>
 .language-picker {
   position: relative;
   flex-shrink: 0;
 }
-
 #language-button {
   padding: 9px 13px;
   color: var(--silver);
@@ -20,7 +28,6 @@
   cursor: pointer;
   font-size: 12px;
 }
-
 #language-menu {
   position: absolute;
   top: calc(100% + 10px);
@@ -33,11 +40,7 @@
   background: #171124;
   box-shadow: 0 12px 30px rgba(0,0,0,.4);
 }
-
-#language-menu[hidden] {
-  display: none;
-}
-
+#language-menu[hidden] { display: none; }
 #language-menu button {
   display: block;
   width: 100%;
@@ -50,12 +53,10 @@
   cursor: pointer;
   font-size: 12px;
 }
-
 #language-menu button:hover {
   background: #302044;
   color: var(--purple-light);
 }
-<style>
 :root {
   --background: #090711;
   --surface: #120e1e;
@@ -67,18 +68,8 @@
   --border: rgba(185, 145, 255, .22);
   --width: 1120px;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body {
   background: var(--background);
   color: var(--silver);
@@ -86,26 +77,10 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button, a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-a:focus-visible {
-  outline: 2px solid var(--purple-light);
-  outline-offset: 4px;
-}
-
-.container {
-  width: min(90%, var(--width));
-  margin-inline: auto;
-}
-
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a:focus-visible { outline: 2px solid var(--purple-light); outline-offset: 4px; }
+.container { width: min(90%, var(--width)); margin-inline: auto; }
 .announcement {
   padding: 8px 15px;
   background: #130d21;
@@ -116,7 +91,6 @@ a:focus-visible {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-
 header {
   position: sticky;
   top: 0;
@@ -125,7 +99,6 @@ header {
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
-
 .nav {
   min-height: 80px;
   display: flex;
@@ -133,14 +106,7 @@ header {
   justify-content: space-between;
   gap: 20px;
 }
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  flex-shrink: 0;
-}
-
+.brand { display: flex; align-items: center; gap: 11px; flex-shrink: 0; }
 .brand-mark {
   width: 49px;
   height: 49px;
@@ -154,21 +120,8 @@ header {
   font-weight: 900;
   letter-spacing: -1px;
 }
-
-.brand-name {
-  display: block;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.brand-subtitle {
-  display: block;
-  color: var(--muted);
-  font-size: 8px;
-  letter-spacing: 1.4px;
-}
-
+.brand-name { display: block; font-size: 13px; font-weight: 800; letter-spacing: 2px; }
+.brand-subtitle { display: block; color: var(--muted); font-size: 8px; letter-spacing: 1.4px; }
 .nav-links {
   display: flex;
   align-items: center;
@@ -176,18 +129,8 @@ header {
   font-size: 12px;
   color: #d5cee2;
 }
-
-.nav-links a:hover,
-.footer-links a:hover {
-  color: var(--purple-light);
-}
-
-.nav-contact {
-  padding: 9px 15px;
-  border: 1px solid var(--border);
-  border-radius: 25px;
-}
-
+.nav-links a:hover, .footer-links a:hover { color: var(--purple-light); }
+.nav-contact { padding: 9px 15px; border: 1px solid var(--border); border-radius: 25px; }
 .hero {
   min-height: 650px;
   display: grid;
@@ -198,7 +141,6 @@ header {
   position: relative;
   isolation: isolate;
 }
-
 .hero::before {
   content: "";
   position: absolute;
@@ -211,7 +153,6 @@ header {
   filter: blur(150px);
   opacity: .2;
 }
-
 .eyebrow {
   color: var(--purple-light);
   font-size: 10px;
@@ -220,34 +161,20 @@ header {
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-
 h1 {
   font-size: clamp(43px, 6vw, 73px);
   line-height: 1.05;
   letter-spacing: -3px;
   margin-bottom: 24px;
 }
-
 .gradient-text {
   background: linear-gradient(100deg, #fff, #d2b5ff, #9871e8);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-.hero-description {
-  max-width: 510px;
-  color: var(--muted);
-  font-size: 15px;
-  margin-bottom: 30px;
-}
-
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 13px;
-}
-
+.hero-description { max-width: 510px; color: var(--muted); font-size: 15px; margin-bottom: 30px; }
+.actions { display: flex; flex-wrap: wrap; gap: 13px; }
 .button {
   min-height: 47px;
   display: inline-flex;
@@ -261,21 +188,13 @@ h1 {
   letter-spacing: .5px;
   transition: transform .2s, background .2s;
 }
-
-.button:hover {
-  transform: translateY(-2px);
-}
-
+.button:hover { transform: translateY(-2px); }
 .button-primary {
   background: linear-gradient(110deg, #d7bdff, #a875ff);
   color: #10091c;
   border-color: transparent;
 }
-
-.button-secondary {
-  background: rgba(255,255,255,.025);
-}
-
+.button-secondary { background: rgba(255,255,255,.025); }
 .hero-art {
   min-height: 400px;
   display: grid;
@@ -288,7 +207,6 @@ h1 {
     radial-gradient(ellipse at center, rgba(112,57,177,.28), transparent 60%),
     linear-gradient(145deg, #1b132a, #090711 75%);
 }
-
 .orbit {
   position: absolute;
   width: 290px;
@@ -297,19 +215,13 @@ h1 {
   border-radius: 50%;
   transform: rotate(-25deg) scaleY(.55);
 }
-
 .orbit-two {
   width: 370px;
   height: 370px;
   transform: rotate(35deg) scaleY(.55);
   border-color: rgba(206,174,255,.16);
 }
-  .hero-emblem {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
-
+.hero-emblem { position: relative; z-index: 1; text-align: center; }
 .hero-emblem strong {
   display: block;
   font-size: clamp(65px, 9vw, 108px);
@@ -322,7 +234,6 @@ h1 {
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 24px rgba(168,117,255,.2));
 }
-
 .hero-emblem span {
   display: block;
   color: var(--purple-light);
@@ -330,7 +241,6 @@ h1 {
   letter-spacing: 4px;
   margin-top: 12px;
 }
-
 .art-caption {
   position: absolute;
   bottom: 20px;
@@ -339,28 +249,15 @@ h1 {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
-
-section {
-  padding-block: 85px;
-}
-
-.section-heading {
-  max-width: 690px;
-  margin-bottom: 38px;
-}
-
+section { padding-block: 85px; }
+.section-heading { max-width: 690px; margin-bottom: 38px; }
 .section-heading h2 {
   font-size: clamp(31px, 4vw, 45px);
   line-height: 1.15;
   letter-spacing: -1.5px;
   margin-bottom: 15px;
 }
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
+.section-heading p { color: var(--muted); font-size: 14px; }
 .project-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -369,7 +266,6 @@ section {
   border-radius: 16px;
   background: var(--surface);
 }
-
 .project-art {
   min-height: 390px;
   padding: 32px;
@@ -382,7 +278,6 @@ section {
     linear-gradient(140deg, #211432, #0b0812);
   border-right: 1px solid var(--border);
 }
-
 .project-label {
   align-self: flex-start;
   color: var(--purple-light);
@@ -390,8 +285,7 @@ section {
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-
-.project-logo {
+  .project-logo {
   text-align: center;
   font-size: clamp(29px, 4vw, 46px);
   font-weight: 900;
@@ -628,6 +522,24 @@ footer {
     align-items: flex-start;
   }
 }
+
+.actions .button {
+  text-align: center;
+}
+
+#news .about-card {
+  max-width: 720px;
+}
+
+#news .about-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-links {
+  flex-wrap: wrap;
+}
+
 </style>
 </head>
 <body>
@@ -651,6 +563,7 @@ footer {
       <a data-i18n="nav_home" href="#home">Home</a>
       <a data-i18n="nav_projects" href="#projects">Projects</a>
       <a data-i18n="nav_about" href="#about">About</a>
+      <a data-i18n="nav_news" href="#news">News</a>
       <a data-i18n="nav_contact" href="#contact">Contact</a>
     </nav>
 
@@ -771,6 +684,8 @@ footer {
           <div class="project-art-note" data-i18n="project_art_note">
             YOUR CHOICES. YOUR JOURNEY.
           </div>
+        </div>
+                  </div>
         </div>
 
         <div class="project-info">
@@ -902,6 +817,22 @@ footer {
     </div>
   </section>
 
+  <!-- NEWS & UPDATES -->
+  <section id="news">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="news_eyebrow">News &amp; Updates</p>
+        <h2 data-i18n="news_title">The next chapter starts here.</h2>
+        <p data-i18n="news_description">Follow announcements and development updates from EBRO Interactive Entertainment.</p>
+      </div>
+      <article class="about-card">
+        <div class="about-icon" aria-hidden="true">✦</div>
+        <h3 data-i18n="news_card_title">EBR: UNIVERSE is in development</h3>
+        <p data-i18n="news_card_text">Our first release is focused on READ STORIES. More news will be shared here as development progresses.</p>
+      </article>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact">
     <div class="container">
@@ -924,11 +855,10 @@ footer {
 
         </div>
 
-        <a class="button button-primary"
-           data-i18n="contact_button"
-           href="#projects">
-          EXPLORE OUR PROJECT
-        </a>
+        <div class="actions">
+          <a class="button button-primary" href="mailto:ebruniverse@gmail.com" data-i18n="contact_email">EMAIL EBRO</a>
+          <a class="button button-secondary" href="https://www.instagram.com/ebr.universe/" target="_blank" rel="noopener noreferrer" data-i18n="contact_instagram">FOLLOW ON INSTAGRAM</a>
+        </div>
       </div>
 
     </div>
@@ -953,6 +883,7 @@ footer {
       <a data-i18n="footer_home" href="#home">Home</a>
       <a data-i18n="footer_projects" href="#projects">Projects</a>
       <a data-i18n="footer_about" href="#about">About</a>
+      <a data-i18n="footer_news" href="#news">News</a>
       <a data-i18n="footer_contact" href="#contact">Contact</a>
     </div>
 
@@ -1014,6 +945,15 @@ footer {
       footer_home: "Inicio",
       footer_projects: "Proyectos",
       footer_about: "Nosotros",
+      nav_news: 'Noticias',
+      news_eyebrow: 'Noticias y novedades',
+      news_title: 'El próximo capítulo comienza aquí.',
+      news_description: 'Sigue los anuncios y las novedades del desarrollo de EBRO Interactive Entertainment.',
+      news_card_title: 'EBR: UNIVERSE está en desarrollo',
+      news_card_text: 'Nuestro primer lanzamiento se centra en READ STORIES. Compartiremos más noticias aquí a medida que avance el desarrollo.',
+      contact_email: 'ESCRIBIR A EBRO',
+      contact_instagram: 'SEGUIR EN INSTAGRAM',
+      footer_news: 'Noticias',
       footer_contact: "Contacto"
     },
 
@@ -1063,6 +1003,15 @@ footer {
       footer_home: "Home",
       footer_projects: "Projects",
       footer_about: "About",
+      nav_news: 'News',
+      news_eyebrow: 'News & Updates',
+      news_title: 'The next chapter starts here.',
+      news_description: 'Follow announcements and development updates from EBRO Interactive Entertainment.',
+      news_card_title: 'EBR: UNIVERSE is in development',
+      news_card_text: 'Our first release is focused on READ STORIES. More news will be shared here as development progresses.',
+      contact_email: 'EMAIL EBRO',
+      contact_instagram: 'FOLLOW ON INSTAGRAM',
+      footer_news: 'News',
       footer_contact: "Contact"
     },
 
@@ -1112,6 +1061,15 @@ footer {
       footer_home: "Accueil",
       footer_projects: "Projets",
       footer_about: "À propos",
+      nav_news: 'Actualités',
+      news_eyebrow: 'Actualités et nouveautés',
+      news_title: 'Le prochain chapitre commence ici.',
+      news_description: 'Suivez les annonces et les nouvelles du développement d’EBRO Interactive Entertainment.',
+      news_card_title: 'EBR: UNIVERSE est en développement',
+      news_card_text: 'Notre première sortie se concentre sur READ STORIES. Nous partagerons ici les nouvelles au fil du développement.',
+      contact_email: 'ÉCRIRE À EBRO',
+      contact_instagram: 'SUIVRE SUR INSTAGRAM',
+      footer_news: 'Actualités',
       footer_contact: "Contact"
     },
 
@@ -1127,7 +1085,7 @@ footer {
       hero_description: "이야기, 캐릭터, 선택과 창의력이 만나는 상상력 넘치는 인터랙티브 경험을 만들고 있습니다. 모든 우주는 하나의 아이디어에서 시작됩니다.",
       hero_button_projects: "프로젝트 살펴보기",
       hero_button_about: "EBRO 알아보기",
-      art_caption: "한계를 넘어서는 상상력",
+            art_caption: "한계를 넘어서는 상상력",
       projects_eyebrow: "주요 프로젝트",
       projects_title: "발견을 기다리는 세계.",
       projects_description: "캐릭터와 선택에 생명을 불어넣는 인터랙티브 비주얼 스토리 게임, 첫 번째 프로젝트를 만나보세요.",
@@ -1161,6 +1119,15 @@ footer {
       footer_home: "홈",
       footer_projects: "프로젝트",
       footer_about: "소개",
+      nav_news: '소식',
+      news_eyebrow: '뉴스 및 업데이트',
+      news_title: '새로운 장이 여기서 시작됩니다.',
+      news_description: 'EBRO Interactive Entertainment의 발표와 개발 소식을 확인하세요.',
+      news_card_title: 'EBR: UNIVERSE 개발 중',
+      news_card_text: '첫 번째 출시는 READ STORIES에 집중합니다. 개발이 진행됨에 따라 이곳에서 더 많은 소식을 전하겠습니다.',
+      contact_email: 'EBRO에 이메일 보내기',
+      contact_instagram: '인스타그램 팔로우',
+      footer_news: '소식',
       footer_contact: "문의"
     },
 
@@ -1210,6 +1177,15 @@ footer {
       footer_home: "Startseite",
       footer_projects: "Projekte",
       footer_about: "Über uns",
+      nav_news: 'Neuigkeiten',
+      news_eyebrow: 'Neuigkeiten & Updates',
+      news_title: 'Das nächste Kapitel beginnt hier.',
+      news_description: 'Verfolge Ankündigungen und Entwicklungsupdates von EBRO Interactive Entertainment.',
+      news_card_title: 'EBR: UNIVERSE befindet sich in Entwicklung',
+      news_card_text: 'Unsere erste Veröffentlichung konzentriert sich auf READ STORIES. Weitere Neuigkeiten teilen wir hier während der Entwicklung.',
+      contact_email: 'EBRO EINE E-MAIL SENDEN',
+      contact_instagram: 'AUF INSTAGRAM FOLGEN',
+      footer_news: 'Neuigkeiten',
       footer_contact: "Kontakt"
     },
 
@@ -1259,6 +1235,15 @@ footer {
       footer_home: "Ana Sayfa",
       footer_projects: "Projeler",
       footer_about: "Hakkımızda",
+      nav_news: 'Haberler',
+      news_eyebrow: 'Haberler ve Güncellemeler',
+      news_title: 'Yeni bölüm burada başlıyor.',
+      news_description: 'EBRO Interactive Entertainment duyurularını ve geliştirme güncellemelerini takip et.',
+      news_card_title: 'EBR: UNIVERSE geliştiriliyor',
+      news_card_text: 'İlk çıkışımız READ STORIES üzerine odaklanıyor. Geliştirme ilerledikçe yeni haberleri burada paylaşacağız.',
+      contact_email: 'EBRO’YA E-POSTA GÖNDER',
+      contact_instagram: 'INSTAGRAM’DA TAKİP ET',
+      footer_news: 'Haberler',
       footer_contact: "İletişim"
     },
 
@@ -1308,6 +1293,15 @@ footer {
       footer_home: "Главная",
       footer_projects: "Проекты",
       footer_about: "О нас",
+      nav_news: 'Новости',
+      news_eyebrow: 'Новости и обновления',
+      news_title: 'Новая глава начинается здесь.',
+      news_description: 'Следите за объявлениями и новостями разработки EBRO Interactive Entertainment.',
+      news_card_title: 'EBR: UNIVERSE находится в разработке',
+      news_card_text: 'Наш первый выпуск посвящён READ STORIES. По мере развития проекта мы будем публиковать здесь новые новости.',
+      contact_email: 'НАПИСАТЬ EBRO',
+      contact_instagram: 'ПОДПИСАТЬСЯ В INSTAGRAM',
+      footer_news: 'Новости',
       footer_contact: "Контакты"
     }
   };
