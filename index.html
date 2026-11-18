@@ -1,1 +1,1447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#090711"/>
+<meta name="description" content="EBRO Interactive Entertainment is an independent game studio creating original interactive visual stories and imaginative digital experiences."/>
+<title>EBRO Interactive Entertainment | Your Story. Our Universe.</title>
+.language-picker {
+  position: relative;
+  flex-shrink: 0;
+}
 
+#language-button {
+  padding: 9px 13px;
+  color: var(--silver);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#language-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 20;
+  min-width: 155px;
+  padding: 7px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #171124;
+  box-shadow: 0 12px 30px rgba(0,0,0,.4);
+}
+
+#language-menu[hidden] {
+  display: none;
+}
+
+#language-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  color: var(--silver);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#language-menu button:hover {
+  background: #302044;
+  color: var(--purple-light);
+}
+<style>
+:root {
+  --background: #090711;
+  --surface: #120e1e;
+  --surface-light: #1a1328;
+  --purple: #a875ff;
+  --purple-light: #d8c1ff;
+  --silver: #f1edf8;
+  --muted: #aaa2bb;
+  --border: rgba(185, 145, 255, .22);
+  --width: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  background: var(--background);
+  color: var(--silver);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--purple-light);
+  outline-offset: 4px;
+}
+
+.container {
+  width: min(90%, var(--width));
+  margin-inline: auto;
+}
+
+.announcement {
+  padding: 8px 15px;
+  background: #130d21;
+  border-bottom: 1px solid var(--border);
+  color: var(--purple-light);
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(9, 7, 17, .94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+}
+
+.brand-mark {
+  width: 49px;
+  height: 49px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--purple);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #34204f, #100b19);
+  box-shadow: 0 0 25px rgba(168, 117, 255, .12);
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.brand-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.brand-subtitle {
+  display: block;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  font-size: 12px;
+  color: #d5cee2;
+}
+
+.nav-links a:hover,
+.footer-links a:hover {
+  color: var(--purple-light);
+}
+
+.nav-contact {
+  padding: 9px 15px;
+  border: 1px solid var(--border);
+  border-radius: 25px;
+}
+
+.hero {
+  min-height: 650px;
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  align-items: center;
+  gap: 45px;
+  padding-block: 85px;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 350px;
+  height: 350px;
+  left: -200px;
+  top: 80px;
+  background: #7028b8;
+  filter: blur(150px);
+  opacity: .2;
+}
+
+.eyebrow {
+  color: var(--purple-light);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(43px, 6vw, 73px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+  margin-bottom: 24px;
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #fff, #d2b5ff, #9871e8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  max-width: 510px;
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.button {
+  min-height: 47px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: .5px;
+  transition: transform .2s, background .2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  background: linear-gradient(110deg, #d7bdff, #a875ff);
+  color: #10091c;
+  border-color: transparent;
+}
+
+.button-secondary {
+  background: rgba(255,255,255,.025);
+}
+
+.hero-art {
+  min-height: 400px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at center, rgba(112,57,177,.28), transparent 60%),
+    linear-gradient(145deg, #1b132a, #090711 75%);
+}
+
+.orbit {
+  position: absolute;
+  width: 290px;
+  height: 290px;
+  border: 1px solid rgba(206,174,255,.32);
+  border-radius: 50%;
+  transform: rotate(-25deg) scaleY(.55);
+}
+
+.orbit-two {
+  width: 370px;
+  height: 370px;
+  transform: rotate(35deg) scaleY(.55);
+  border-color: rgba(206,174,255,.16);
+}
+  .hero-emblem {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero-emblem strong {
+  display: block;
+  font-size: clamp(65px, 9vw, 108px);
+  line-height: 1.2;
+  letter-spacing: -9px;
+  padding-right: 9px;
+  background: linear-gradient(135deg, #fff, #c5bad8, #9871e8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 24px rgba(168,117,255,.2));
+}
+
+.hero-emblem span {
+  display: block;
+  color: var(--purple-light);
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-top: 12px;
+}
+
+.art-caption {
+  position: absolute;
+  bottom: 20px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+section {
+  padding-block: 85px;
+}
+
+.section-heading {
+  max-width: 690px;
+  margin-bottom: 38px;
+}
+
+.section-heading h2 {
+  font-size: clamp(31px, 4vw, 45px);
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  margin-bottom: 15px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.project-art {
+  min-height: 390px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at center, rgba(131,66,211,.34), transparent 58%),
+    linear-gradient(140deg, #211432, #0b0812);
+  border-right: 1px solid var(--border);
+}
+
+.project-label {
+  align-self: flex-start;
+  color: var(--purple-light);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.project-logo {
+  text-align: center;
+  font-size: clamp(29px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.project-logo span {
+  display: block;
+  margin-top: 12px;
+  color: var(--purple-light);
+  font-size: 11px;
+  letter-spacing: 5px;
+}
+
+.project-art-note {
+  color: #b7a7ce;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.project-info {
+  align-self: center;
+  padding: 40px;
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid rgba(168,117,255,.4);
+  border-radius: 30px;
+  color: var(--purple-light);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.project-info h3 {
+  font-size: 29px;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.project-info p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 22px;
+}
+
+.features {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 26px;
+  font-size: 12px;
+  color: #ddd4eb;
+}
+
+.features li::before {
+  content: "✦";
+  color: var(--purple);
+  margin-right: 10px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 12px;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.about-card {
+  padding: 27px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #171124, #0d0a15);
+}
+
+.about-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 19px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--purple-light);
+  font-size: 20px;
+}
+
+.about-card h3 {
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+
+.about-card p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.vision {
+  padding: 50px 30px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background:
+    radial-gradient(ellipse at center, rgba(112,53,181,.2), transparent 70%),
+    var(--surface);
+}
+
+.vision h2 {
+  font-size: clamp(30px, 4vw, 43px);
+  margin-bottom: 16px;
+}
+
+.vision p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.contact-panel {
+  padding: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+}
+
+.contact-panel h3 {
+  font-size: 23px;
+  margin-bottom: 8px;
+}
+
+.contact-panel p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+footer {
+  padding: 30px 0;
+  background: #08060e;
+  border-top: 1px solid var(--border);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.footer-brand {
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.footer-note,
+.footer-links {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 17px;
+}
+
+@media (max-width: 850px) {
+  .nav {
+    flex-wrap: wrap;
+    padding-block: 14px;
+  }
+
+  .nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding-block: 65px;
+  }
+
+  .hero-art {
+    min-height: 330px;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-art {
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 600px) {
+  section {
+    padding-block: 60px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info {
+    padding: 27px;
+  }
+
+  .contact-panel {
+    padding: 25px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="announcement" data-i18n="announcement">
+  Independent Game Studio · Original Interactive Experiences
+</div>
+
+<header>
+  <div class="container nav">
+
+    <a aria-label="EBRO home" class="brand" href="#home">
+      <span class="brand-mark">EBRO</span>
+      <span>
+        <span class="brand-name">EBRO</span>
+        <span class="brand-subtitle">INTERACTIVE ENTERTAINMENT</span>
+      </span>
+    </a>
+
+    <nav aria-label="Main navigation" class="nav-links">
+      <a data-i18n="nav_home" href="#home">Home</a>
+      <a data-i18n="nav_projects" href="#projects">Projects</a>
+      <a data-i18n="nav_about" href="#about">About</a>
+      <a data-i18n="nav_contact" href="#contact">Contact</a>
+    </nav>
+
+    <div class="language-picker">
+      <button
+        aria-controls="language-menu"
+        aria-expanded="false"
+        id="language-button"
+        type="button">
+        🌐 ES ▾
+      </button>
+
+      <div
+        aria-label="Choose a language"
+        hidden
+        id="language-menu"
+        role="group">
+
+        <button data-lang="es" type="button">🇪🇸 Español</button>
+        <button data-lang="en" type="button">🇬🇧 English</button>
+        <button data-lang="fr" type="button">🇫🇷 Français</button>
+        <button data-lang="ko" type="button">🇰🇷 한국어</button>
+        <button data-lang="de" type="button">🇩🇪 Deutsch</button>
+        <button data-lang="tr" type="button">🇹🇷 Türkçe</button>
+        <button data-lang="ru" type="button">🇷🇺 Русский</button>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section class="container hero" id="home">
+
+    <div>
+      <p class="eyebrow" data-i18n="hero_eyebrow">
+        Welcome to EBRO
+      </p>
+
+      <h1 data-i18n="hero_title">
+        Your Story.<br/>
+        <span class="gradient-text">Our Universe.</span>
+      </h1>
+
+      <p class="hero-description" data-i18n="hero_description">
+        We are building imaginative interactive experiences where
+        stories, characters, choices and creativity come together.
+        Every universe begins with an idea.
+      </p>
+
+      <div class="actions">
+        <a class="button button-primary"
+           data-i18n="hero_button_projects"
+           href="#projects">
+          EXPLORE OUR PROJECT
+        </a>
+
+        <a class="button button-secondary"
+           data-i18n="hero_button_about"
+           href="#about">
+          DISCOVER EBRO
+        </a>
+      </div>
+    </div>
+
+    <div aria-label="EBRO company emblem" class="hero-art">
+      <div class="orbit"></div>
+      <div class="orbit orbit-two"></div>
+
+      <div class="hero-emblem">
+        <strong>EBRO</strong>
+        <span>INTERACTIVE ENTERTAINMENT</span>
+      </div>
+
+      <div class="art-caption" data-i18n="art_caption">
+        Imagination without limits
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="projects_eyebrow">
+          Featured Project
+        </p>
+
+        <h2 data-i18n="projects_title">
+          Worlds waiting to be discovered.
+        </h2>
+
+        <p data-i18n="projects_description">
+          Meet our first featured project: an interactive visual
+          story game designed to bring characters and decisions to life.
+        </p>
+      </div>
+
+      <article class="project-card">
+
+        <div class="project-art">
+          <div class="project-label" data-i18n="project_label">
+            An EBRO Original
+          </div>
+
+          <div class="project-logo">
+            EBR: UNIVERSE
+            <span data-i18n="project_read_stories">
+              READ STORIES
+            </span>
+          </div>
+
+          <div class="project-art-note" data-i18n="project_art_note">
+            YOUR CHOICES. YOUR JOURNEY.
+          </div>
+        </div>
+
+        <div class="project-info">
+
+          <span class="status" data-i18n="project_status">
+            In Development
+          </span>
+
+          <h3>EBR: UNIVERSE</h3>
+
+          <p data-i18n="project_description">
+            Enter a world of visual interactive storytelling.
+            Discover characters, experience cinematic scenes and
+            make choices that shape your journey through each story.
+          </p>
+
+          <ul class="features">
+            <li data-i18n="feature_1">Interactive visual stories</li>
+            <li data-i18n="feature_2">Memorable characters and relationships</li>
+            <li data-i18n="feature_3">Choices and story progression</li>
+            <li data-i18n="feature_4">A growing universe of original narratives</li>
+          </ul>
+
+          <a class="button button-primary"
+             data-i18n="project_button"
+             href="#contact">
+            FOLLOW OUR JOURNEY
+          </a>
+
+          <p class="note" data-i18n="project_note">
+            The initial release is focused on READ STORIES.
+            More features are planned for future development.
+          </p>
+
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="about_eyebrow">
+          Who We Are
+        </p>
+
+        <h2 data-i18n="about_title">
+          Creativity at the heart of every world.
+        </h2>
+
+        <p data-i18n="about_description">
+          EBRO Interactive Entertainment is an independent game
+          studio concept focused on original games, interactive
+          narratives and imaginative digital experiences.
+        </p>
+      </div>
+
+      <div class="about-grid">
+
+        <article class="about-card">
+          <div aria-hidden="true" class="about-icon">✧</div>
+
+          <h3 data-i18n="about_card_1_title">
+            Original Worlds
+          </h3>
+
+          <p data-i18n="about_card_1_text">
+            We develop our own concepts, characters and fictional
+            universes with distinct identities and stories.
+          </p>
+        </article>
+
+        <article class="about-card">
+          <div aria-hidden="true" class="about-icon">◇</div>
+
+          <h3 data-i18n="about_card_2_title">
+            Interactive Stories
+          </h3>
+
+          <p data-i18n="about_card_2_text">
+            We want players to feel involved in the narrative,
+            explore meaningful choices and experience stories
+            at their own pace.
+          </p>
+        </article>
+
+        <article class="about-card">
+          <div aria-hidden="true" class="about-icon">✦</div>
+
+          <h3 data-i18n="about_card_3_title">
+            Creative Technology
+          </h3>
+
+          <p data-i18n="about_card_3_text">
+            We explore digital tools, including AI-assisted
+            workflows, to support the creative process and
+            develop new interactive experiences.
+          </p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section>
+    <div class="container">
+      <div class="vision">
+
+        <p class="eyebrow" data-i18n="vision_eyebrow">
+          Our Vision
+        </p>
+
+        <h2 data-i18n="vision_title">
+          Every universe starts with a story.
+        </h2>
+
+        <p data-i18n="vision_text">
+          Our vision is to build original interactive experiences
+          that invite people to explore new worlds, connect with
+          characters and discover the possibilities of imagination.
+          We are starting with one project and growing one step at a time.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+
+      <div class="contact-panel">
+        <div>
+
+          <p class="eyebrow" data-i18n="contact_eyebrow">
+            Stay Connected
+          </p>
+
+          <h3 data-i18n="contact_title">
+            Follow the journey of EBRO.
+          </h3>
+
+          <p data-i18n="contact_text">
+            Our first project is in development.
+            More information will be shared as it becomes available.
+          </p>
+
+        </div>
+
+        <a class="button button-primary"
+           data-i18n="contact_button"
+           href="#projects">
+          EXPLORE OUR PROJECT
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-content">
+
+    <div>
+      <div class="footer-brand">
+        EBRO INTERACTIVE ENTERTAINMENT
+      </div>
+
+      <div class="footer-note">
+        Your Story. Our Universe.
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a data-i18n="footer_home" href="#home">Home</a>
+      <a data-i18n="footer_projects" href="#projects">Projects</a>
+      <a data-i18n="footer_about" href="#about">About</a>
+      <a data-i18n="footer_contact" href="#contact">Contact</a>
+    </div>
+
+    <div class="footer-note">
+      © <span id="year"></span> EBRO Interactive Entertainment
+    </div>
+
+  </div>
+</footer>
+<script>
+(() => {
+  const button = document.getElementById("language-button");
+  const menu = document.getElementById("language-menu");
+
+  const translations = {
+    es: {
+      announcement: "Estudio independiente de videojuegos · Experiencias interactivas originales",
+      nav_home: "Inicio",
+      nav_projects: "Proyectos",
+      nav_about: "Nosotros",
+      nav_contact: "Contacto",
+      language_menu_label: "Elegir un idioma",
+      hero_eyebrow: "Bienvenido a EBRO",
+      hero_title: 'Tu historia.<br><span class="gradient-text">Nuestro universo.</span>',
+      hero_description: "Estamos creando experiencias interactivas llenas de imaginación donde las historias, los personajes, las decisiones y la creatividad se unen. Todo universo comienza con una idea.",
+      hero_button_projects: "EXPLORAR NUESTRO PROYECTO",
+      hero_button_about: "DESCUBRIR EBRO",
+      art_caption: "Imaginación sin límites",
+      projects_eyebrow: "Proyecto destacado",
+      projects_title: "Mundos esperando ser descubiertos.",
+      projects_description: "Conoce nuestro primer proyecto destacado: un videojuego de historias visuales interactivas diseñado para dar vida a personajes y decisiones.",
+      project_label: "Un original de EBRO",
+      project_read_stories: "LEER HISTORIAS",
+      project_art_note: "TUS DECISIONES. TU CAMINO.",
+      project_status: "En desarrollo",
+      project_description: "Entra en un mundo de narración visual interactiva. Descubre personajes, vive escenas cinematográficas y toma decisiones que darán forma a tu recorrido en cada historia.",
+      feature_1: "Historias visuales interactivas",
+      feature_2: "Personajes y relaciones memorables",
+      feature_3: "Decisiones y progreso de la historia",
+      feature_4: "Un universo creciente de narrativas originales",
+      project_button: "SIGUE NUESTRO CAMINO",
+      project_note: "El lanzamiento inicial se centrará en READ STORIES. Habrá más funciones en futuras etapas de desarrollo.",
+      about_eyebrow: "Quiénes somos",
+      about_title: "La creatividad en el corazón de cada mundo.",
+      about_description: "EBRO Interactive Entertainment es un concepto de estudio independiente de videojuegos enfocado en juegos originales, narrativas interactivas y experiencias digitales imaginativas.",
+      about_card_1_title: "Mundos originales",
+      about_card_1_text: "Desarrollamos nuestros propios conceptos, personajes y universos ficticios con identidades e historias únicas.",
+      about_card_2_title: "Historias interactivas",
+      about_card_2_text: "Queremos que los jugadores participen en la narrativa, exploren decisiones significativas y disfruten las historias a su propio ritmo.",
+      about_card_3_title: "Tecnología creativa",
+      about_card_3_text: "Exploramos herramientas digitales, incluidos flujos de trabajo asistidos por IA, para apoyar el proceso creativo y desarrollar nuevas experiencias interactivas.",
+      vision_eyebrow: "Nuestra visión",
+      vision_title: "Todo universo comienza con una historia.",
+      vision_text: "Nuestra visión es crear experiencias interactivas originales que inviten a las personas a explorar nuevos mundos, conectar con personajes y descubrir las posibilidades de la imaginación. Comenzamos con un proyecto y crecemos paso a paso.",
+      contact_eyebrow: "Mantente conectado",
+      contact_title: "Sigue el camino de EBRO.",
+      contact_text: "Nuestro primer proyecto está en desarrollo. Compartiremos más información a medida que esté disponible.",
+      contact_button: "EXPLORAR NUESTRO PROYECTO",
+      footer_home: "Inicio",
+      footer_projects: "Proyectos",
+      footer_about: "Nosotros",
+      footer_contact: "Contacto"
+    },
+
+    en: {
+      announcement: "Independent Game Studio · Original Interactive Experiences",
+      nav_home: "Home",
+      nav_projects: "Projects",
+      nav_about: "About",
+      nav_contact: "Contact",
+      language_menu_label: "Choose a language",
+      hero_eyebrow: "Welcome to EBRO",
+      hero_title: 'Your Story.<br><span class="gradient-text">Our Universe.</span>',
+      hero_description: "We are building imaginative interactive experiences where stories, characters, choices and creativity come together. Every universe begins with an idea.",
+      hero_button_projects: "EXPLORE OUR PROJECT",
+      hero_button_about: "DISCOVER EBRO",
+      art_caption: "Imagination without limits",
+      projects_eyebrow: "Featured Project",
+      projects_title: "Worlds waiting to be discovered.",
+      projects_description: "Meet our first featured project: an interactive visual story game designed to bring characters and decisions to life.",
+      project_label: "An EBRO Original",
+      project_read_stories: "READ STORIES",
+      project_art_note: "YOUR CHOICES. YOUR JOURNEY.",
+      project_status: "In Development",
+      project_description: "Enter a world of visual interactive storytelling. Discover characters, experience cinematic scenes and make choices that shape your journey through each story.",
+      feature_1: "Interactive visual stories",
+      feature_2: "Memorable characters and relationships",
+      feature_3: "Choices and story progression",
+      feature_4: "A growing universe of original narratives",
+      project_button: "FOLLOW OUR JOURNEY",
+      project_note: "The initial release is focused on READ STORIES. More features are planned for future development.",
+      about_eyebrow: "Who We Are",
+      about_title: "Creativity at the heart of every world.",
+      about_description: "EBRO Interactive Entertainment is an independent game studio concept focused on original games, interactive narratives and imaginative digital experiences.",
+      about_card_1_title: "Original Worlds",
+      about_card_1_text: "We develop our own concepts, characters and fictional universes with distinct identities and stories.",
+      about_card_2_title: "Interactive Stories",
+      about_card_2_text: "We want players to feel involved in the narrative, explore meaningful choices and experience stories at their own pace.",
+      about_card_3_title: "Creative Technology",
+      about_card_3_text: "We explore digital tools, including AI-assisted workflows, to support the creative process and develop new interactive experiences.",
+      vision_eyebrow: "Our Vision",
+      vision_title: "Every universe starts with a story.",
+      vision_text: "Our vision is to build original interactive experiences that invite people to explore new worlds, connect with characters and discover the possibilities of imagination. We are starting with one project and growing one step at a time.",
+      contact_eyebrow: "Stay Connected",
+      contact_title: "Follow the journey of EBRO.",
+      contact_text: "Our first project is in development. More information will be shared as it becomes available.",
+      contact_button: "EXPLORE OUR PROJECT",
+      footer_home: "Home",
+      footer_projects: "Projects",
+      footer_about: "About",
+      footer_contact: "Contact"
+    },
+
+    fr: {
+      announcement: "Studio de jeux indépendant · Expériences interactives originales",
+      nav_home: "Accueil",
+      nav_projects: "Projets",
+      nav_about: "À propos",
+      nav_contact: "Contact",
+      language_menu_label: "Choisir une langue",
+      hero_eyebrow: "Bienvenue chez EBRO",
+      hero_title: 'Votre histoire.<br><span class="gradient-text">Notre univers.</span>',
+      hero_description: "Nous créons des expériences interactives imaginatives où les histoires, les personnages, les choix et la créativité se rencontrent. Chaque univers commence par une idée.",
+      hero_button_projects: "DÉCOUVRIR NOTRE PROJET",
+      hero_button_about: "DÉCOUVRIR EBRO",
+      art_caption: "L’imagination sans limites",
+      projects_eyebrow: "Projet à la une",
+      projects_title: "Des mondes à découvrir.",
+      projects_description: "Découvrez notre premier projet phare : un jeu narratif visuel interactif qui donne vie aux personnages et aux décisions.",
+      project_label: "Une création originale EBRO",
+      project_read_stories: "LIRE DES HISTOIRES",
+      project_art_note: "VOS CHOIX. VOTRE PARCOURS.",
+      project_status: "En développement",
+      project_description: "Entrez dans un univers de narration visuelle interactive. Découvrez des personnages, vivez des scènes cinématographiques et faites des choix qui façonneront votre parcours dans chaque histoire.",
+      feature_1: "Histoires visuelles interactives",
+      feature_2: "Personnages et relations mémorables",
+      feature_3: "Choix et progression de l’histoire",
+      feature_4: "Un univers grandissant de récits originaux",
+      project_button: "SUIVRE NOTRE PARCOURS",
+      project_note: "La première version sera consacrée à READ STORIES. D’autres fonctionnalités sont prévues pour les prochaines étapes.",
+      about_eyebrow: "Qui sommes-nous",
+      about_title: "La créativité au cœur de chaque monde.",
+      about_description: "EBRO Interactive Entertainment est un projet de studio de jeux indépendant consacré aux jeux originaux, aux récits interactifs et aux expériences numériques imaginatives.",
+      about_card_1_title: "Mondes originaux",
+      about_card_1_text: "Nous développons nos propres concepts, personnages et univers fictifs avec des identités et des histoires distinctes.",
+      about_card_2_title: "Histoires interactives",
+      about_card_2_text: "Nous voulons que les joueurs participent au récit, explorent des choix importants et découvrent les histoires à leur rythme.",
+      about_card_3_title: "Technologie créative",
+      about_card_3_text: "Nous explorons des outils numériques, notamment des méthodes de travail assistées par l’IA, pour soutenir la création et développer de nouvelles expériences interactives.",
+      vision_eyebrow: "Notre vision",
+      vision_title: "Chaque univers commence par une histoire.",
+      vision_text: "Notre vision est de créer des expériences interactives originales qui invitent chacun à explorer de nouveaux mondes, à rencontrer des personnages et à découvrir les possibilités de l’imagination. Nous commençons par un projet et avançons étape par étape.",
+      contact_eyebrow: "Restons connectés",
+      contact_title: "Suivez le parcours d’EBRO.",
+      contact_text: "Notre premier projet est en développement. Nous partagerons plus d’informations dès qu’elles seront disponibles.",
+      contact_button: "DÉCOUVRIR NOTRE PROJET",
+      footer_home: "Accueil",
+      footer_projects: "Projets",
+      footer_about: "À propos",
+      footer_contact: "Contact"
+    },
+
+    ko: {
+      announcement: "독립 게임 스튜디오 · 오리지널 인터랙티브 경험",
+      nav_home: "홈",
+      nav_projects: "프로젝트",
+      nav_about: "소개",
+      nav_contact: "문의",
+      language_menu_label: "언어 선택",
+      hero_eyebrow: "EBRO에 오신 것을 환영합니다",
+      hero_title: '당신의 이야기.<br><span class="gradient-text">우리의 우주.</span>',
+      hero_description: "이야기, 캐릭터, 선택과 창의력이 만나는 상상력 넘치는 인터랙티브 경험을 만들고 있습니다. 모든 우주는 하나의 아이디어에서 시작됩니다.",
+      hero_button_projects: "프로젝트 살펴보기",
+      hero_button_about: "EBRO 알아보기",
+      art_caption: "한계를 넘어서는 상상력",
+      projects_eyebrow: "주요 프로젝트",
+      projects_title: "발견을 기다리는 세계.",
+      projects_description: "캐릭터와 선택에 생명을 불어넣는 인터랙티브 비주얼 스토리 게임, 첫 번째 프로젝트를 만나보세요.",
+      project_label: "EBRO 오리지널",
+      project_read_stories: "스토리 읽기",
+      project_art_note: "당신의 선택. 당신의 여정.",
+      project_status: "개발 중",
+      project_description: "인터랙티브 비주얼 스토리텔링의 세계로 들어오세요. 캐릭터를 만나고 영화 같은 장면을 경험하며 각 이야기의 여정을 바꾸는 선택을 해보세요.",
+      feature_1: "인터랙티브 비주얼 스토리",
+      feature_2: "기억에 남는 캐릭터와 관계",
+      feature_3: "선택과 스토리 진행",
+      feature_4: "확장되는 오리지널 이야기 세계",
+      project_button: "개발 소식 확인하기",
+      project_note: "첫 출시는 READ STORIES에 집중합니다. 다른 기능은 향후 개발 단계에서 계획하고 있습니다.",
+      about_eyebrow: "우리는 누구인가",
+      about_title: "모든 세계의 중심에는 창의력이 있습니다.",
+      about_description: "EBRO Interactive Entertainment는 오리지널 게임, 인터랙티브 이야기와 상상력 넘치는 디지털 경험을 만드는 독립 게임 스튜디오 콘셉트입니다.",
+      about_card_1_title: "오리지널 세계",
+      about_card_1_text: "독특한 정체성과 이야기를 가진 자체 콘셉트, 캐릭터와 가상 세계를 개발합니다.",
+      about_card_2_title: "인터랙티브 스토리",
+      about_card_2_text: "플레이어가 이야기의 일부가 되어 의미 있는 선택을 하고 자신만의 속도로 이야기를 경험하기를 바랍니다.",
+      about_card_3_title: "창의적인 기술",
+      about_card_3_text: "창작 과정을 돕고 새로운 인터랙티브 경험을 개발하기 위해 AI 지원 작업 흐름을 포함한 디지털 도구를 탐구합니다.",
+      vision_eyebrow: "우리의 비전",
+      vision_title: "모든 우주는 이야기에서 시작됩니다.",
+      vision_text: "새로운 세계를 탐험하고 캐릭터와 교감하며 상상력의 가능성을 발견하도록 초대하는 오리지널 인터랙티브 경험을 만드는 것이 우리의 비전입니다. 하나의 프로젝트에서 시작해 한 걸음씩 성장합니다.",
+      contact_eyebrow: "계속 함께해 주세요",
+      contact_title: "EBRO의 여정을 지켜봐 주세요.",
+      contact_text: "첫 번째 프로젝트는 개발 중입니다. 새로운 소식이 준비되는 대로 공유하겠습니다.",
+      contact_button: "프로젝트 살펴보기",
+      footer_home: "홈",
+      footer_projects: "프로젝트",
+      footer_about: "소개",
+      footer_contact: "문의"
+    },
+
+    de: {
+      announcement: "Unabhängiges Spielestudio · Originelle interaktive Erlebnisse",
+      nav_home: "Startseite",
+      nav_projects: "Projekte",
+      nav_about: "Über uns",
+      nav_contact: "Kontakt",
+      language_menu_label: "Sprache auswählen",
+      hero_eyebrow: "Willkommen bei EBRO",
+      hero_title: 'Deine Geschichte.<br><span class="gradient-text">Unser Universum.</span>',
+      hero_description: "Wir entwickeln fantasievolle interaktive Erlebnisse, in denen Geschichten, Figuren, Entscheidungen und Kreativität zusammenkommen. Jedes Universum beginnt mit einer Idee.",
+      hero_button_projects: "UNSER PROJEKT ENTDECKEN",
+      hero_button_about: "EBRO ENTDECKEN",
+      art_caption: "Fantasie ohne Grenzen",
+      projects_eyebrow: "Ausgewähltes Projekt",
+      projects_title: "Welten, die darauf warten, entdeckt zu werden.",
+      projects_description: "Lerne unser erstes Projekt kennen: ein interaktives visuelles Story-Spiel, das Figuren und Entscheidungen zum Leben erweckt.",
+      project_label: "Ein EBRO Original",
+      project_read_stories: "GESCHICHTEN LESEN",
+      project_art_note: "DEINE ENTSCHEIDUNGEN. DEINE REISE.",
+      project_status: "In Entwicklung",
+      project_description: "Betritt eine Welt des interaktiven visuellen Erzählens. Entdecke Figuren, erlebe filmische Szenen und triff Entscheidungen, die deinen Weg durch jede Geschichte prägen.",
+      feature_1: "Interaktive visuelle Geschichten",
+      feature_2: "Unvergessliche Figuren und Beziehungen",
+      feature_3: "Entscheidungen und Handlungsfortschritt",
+      feature_4: "Ein wachsendes Universum origineller Geschichten",
+      project_button: "UNSERE REISE VERFOLGEN",
+      project_note: "Die erste Veröffentlichung konzentriert sich auf READ STORIES. Weitere Funktionen sind für spätere Entwicklungsphasen geplant.",
+      about_eyebrow: "Wer wir sind",
+      about_title: "Kreativität im Mittelpunkt jeder Welt.",
+      about_description: "EBRO Interactive Entertainment ist das Konzept eines unabhängigen Spielestudios mit Schwerpunkt auf originellen Spielen, interaktiven Erzählungen und fantasievollen digitalen Erlebnissen.",
+      about_card_1_title: "Originelle Welten",
+      about_card_1_text: "Wir entwickeln eigene Konzepte, Figuren und fiktive Universen mit unverwechselbaren Identitäten und Geschichten.",
+      about_card_2_title: "Interaktive Geschichten",
+      about_card_2_text: "Spieler sollen Teil der Erzählung werden, bedeutungsvolle Entscheidungen treffen und Geschichten in ihrem eigenen Tempo erleben können.",
+      about_card_3_title: "Kreative Technologie",
+      about_card_3_text: "Wir erkunden digitale Werkzeuge, darunter KI-gestützte Arbeitsabläufe, um den kreativen Prozess zu unterstützen und neue interaktive Erlebnisse zu entwickeln.",
+      vision_eyebrow: "Unsere Vision",
+      vision_title: "Jedes Universum beginnt mit einer Geschichte.",
+      vision_text: "Unsere Vision ist es, originelle interaktive Erlebnisse zu schaffen, die Menschen einladen, neue Welten zu erkunden, Figuren kennenzulernen und die Möglichkeiten der Fantasie zu entdecken. Wir beginnen mit einem Projekt und wachsen Schritt für Schritt.",
+      contact_eyebrow: "Bleib in Verbindung",
+      contact_title: "Begleite EBRO auf seinem Weg.",
+      contact_text: "Unser erstes Projekt befindet sich in Entwicklung. Weitere Informationen werden veröffentlicht, sobald sie verfügbar sind.",
+      contact_button: "UNSER PROJEKT ENTDECKEN",
+      footer_home: "Startseite",
+      footer_projects: "Projekte",
+      footer_about: "Über uns",
+      footer_contact: "Kontakt"
+    },
+
+    tr: {
+      announcement: "Bağımsız Oyun Stüdyosu · Özgün Etkileşimli Deneyimler",
+      nav_home: "Ana Sayfa",
+      nav_projects: "Projeler",
+      nav_about: "Hakkımızda",
+      nav_contact: "İletişim",
+      language_menu_label: "Dil seçin",
+      hero_eyebrow: "EBRO’ya hoş geldin",
+      hero_title: 'Senin hikâyen.<br><span class="gradient-text">Bizim evrenimiz.</span>',
+      hero_description: "Hikâyelerin, karakterlerin, seçimlerin ve yaratıcılığın bir araya geldiği hayal gücü dolu etkileşimli deneyimler geliştiriyoruz. Her evren bir fikirle başlar.",
+      hero_button_projects: "PROJEMİZİ KEŞFET",
+      hero_button_about: "EBRO’YU KEŞFET",
+      art_caption: "Sınırsız hayal gücü",
+      projects_eyebrow: "Öne Çıkan Proje",
+      projects_title: "Keşfedilmeyi bekleyen dünyalar.",
+      projects_description: "Karakterlere ve kararlara hayat vermek için tasarlanmış etkileşimli görsel hikâye oyunumuz olan ilk projemizle tanış.",
+      project_label: "Bir EBRO orijinali",
+      project_read_stories: "HİKÂYELERİ OKU",
+      project_art_note: "SEÇİMLERİN. YOLCULUĞUN.",
+      project_status: "Geliştiriliyor",
+      project_description: "Etkileşimli görsel hikâye anlatımının dünyasına adım at. Karakterleri keşfet, sinematik sahneleri deneyimle ve her hikâyedeki yolculuğunu şekillendiren seçimler yap.",
+      feature_1: "Etkileşimli görsel hikâyeler",
+      feature_2: "Unutulmaz karakterler ve ilişkiler",
+      feature_3: "Seçimler ve hikâye ilerleyişi",
+      feature_4: "Genişleyen özgün anlatı evreni",
+      project_button: "YOLCULUĞUMUZU TAKİP ET",
+      project_note: "İlk sürüm READ STORIES üzerine odaklanacak. Diğer özellikler gelecekteki geliştirme aşamalarında planlanmaktadır.",
+      about_eyebrow: "Biz kimiz",
+      about_title: "Her dünyanın merkezinde yaratıcılık.",
+      about_description: "EBRO Interactive Entertainment; özgün oyunlara, etkileşimli anlatılara ve hayal gücü dolu dijital deneyimlere odaklanan bağımsız bir oyun stüdyosu konseptidir.",
+      about_card_1_title: "Özgün Dünyalar",
+      about_card_1_text: "Kendine özgü kimlikleri ve hikâyeleri olan özgün fikirler, karakterler ve kurgusal evrenler geliştiriyoruz.",
+      about_card_2_title: "Etkileşimli Hikâyeler",
+      about_card_2_text: "Oyuncuların anlatının bir parçası olmasını, anlamlı seçimler yapmasını ve hikâyeleri kendi hızlarında deneyimlemesini istiyoruz.",
+      about_card_3_title: "Yaratıcı Teknoloji",
+      about_card_3_text: "Yaratıcı süreci desteklemek ve yeni etkileşimli deneyimler geliştirmek için yapay zekâ destekli iş akışları dâhil dijital araçları araştırıyoruz.",
+      vision_eyebrow: "Vizyonumuz",
+      vision_title: "Her evren bir hikâyeyle başlar.",
+      vision_text: "Vizyonumuz; insanları yeni dünyaları keşfetmeye, karakterlerle bağ kurmaya ve hayal gücünün olanaklarını görmeye davet eden özgün etkileşimli deneyimler oluşturmaktır. Tek bir projeyle başlıyor ve adım adım büyüyoruz.",
+      contact_eyebrow: "Bağlantıda kal",
+      contact_title: "EBRO’nun yolculuğunu takip et.",
+      contact_text: "İlk projemiz geliştirme aşamasında. Yeni bilgiler hazır oldukça paylaşılacaktır.",
+      contact_button: "PROJEMİZİ KEŞFET",
+      footer_home: "Ana Sayfa",
+      footer_projects: "Projeler",
+      footer_about: "Hakkımızda",
+      footer_contact: "İletişim"
+    },
+
+    ru: {
+      announcement: "Независимая игровая студия · Оригинальные интерактивные проекты",
+      nav_home: "Главная",
+      nav_projects: "Проекты",
+      nav_about: "О нас",
+      nav_contact: "Контакты",
+      language_menu_label: "Выберите язык",
+      hero_eyebrow: "Добро пожаловать в EBRO",
+      hero_title: 'Твоя история.<br><span class="gradient-text">Наша вселенная.</span>',
+      hero_description: "Мы создаём интерактивные проекты, в которых встречаются истории, персонажи, выбор и творчество. Каждая вселенная начинается с идеи.",
+      hero_button_projects: "НАШ ПРОЕКТ",
+      hero_button_about: "УЗНАТЬ EBRO",
+      art_caption: "Воображение без границ",
+      projects_eyebrow: "Главный проект",
+      projects_title: "Миры, которые ждут своего открытия.",
+      projects_description: "Познакомьтесь с нашим первым проектом — интерактивной визуальной игрой-историей, которая оживляет персонажей и решения.",
+      project_label: "Оригинальный проект EBRO",
+      project_read_stories: "ЧИТАТЬ ИСТОРИИ",
+      project_art_note: "ТВОЙ ВЫБОР. ТВОЙ ПУТЬ.",
+      project_status: "В разработке",
+      project_description: "Войди в мир интерактивного визуального повествования. Знакомься с персонажами, переживай кинематографичные сцены и принимай решения, которые формируют твой путь в каждой истории.",
+      feature_1: "Интерактивные визуальные истории",
+      feature_2: "Запоминающиеся персонажи и отношения",
+      feature_3: "Выбор и развитие сюжета",
+      feature_4: "Растущая вселенная оригинальных историй",
+      project_button: "СЛЕДИТЬ ЗА НАШИМ ПУТЁМ",
+      project_note: "Первый выпуск будет посвящён READ STORIES. Другие функции планируются на следующих этапах разработки.",
+      about_eyebrow: "Кто мы",
+      about_title: "Творчество в основе каждого мира.",
+      about_description: "EBRO Interactive Entertainment — концепция независимой игровой студии, ориентированной на оригинальные игры, интерактивные истории и творческие цифровые проекты.",
+      about_card_1_title: "Оригинальные миры",
+      about_card_1_text: "Мы создаём собственные идеи, персонажей и вымышленные вселенные с уникальным характером и историями.",
+      about_card_2_title: "Интерактивные истории",
+      about_card_2_text: "Мы хотим, чтобы игроки участвовали в повествовании, делали значимые выборы и проходили истории в своём темпе.",
+      about_card_3_title: "Творческие технологии",
+      about_card_3_text: "Мы изучаем цифровые инструменты, включая процессы с поддержкой ИИ, чтобы помогать творчеству и создавать новые интерактивные проекты.",
+      vision_eyebrow: "Наше видение",
+      vision_title: "Каждая вселенная начинается с истории.",
+      vision_text: "Наша цель — создавать оригинальные интерактивные проекты, которые приглашают людей исследовать новые миры, знакомиться с персонажами и открывать возможности воображения. Мы начинаем с одного проекта и растём шаг за шагом.",
+      contact_eyebrow: "Оставайтесь на связи",
+      contact_title: "Следите за развитием EBRO.",
+      contact_text: "Наш первый проект находится в разработке. Мы будем делиться новостями по мере их появления.",
+      contact_button: "НАШ ПРОЕКТ",
+      footer_home: "Главная",
+      footer_projects: "Проекты",
+      footer_about: "О нас",
+      footer_contact: "Контакты"
+    }
+  };
+
+  const languageNames = {
+    es: "Español",
+    en: "English",
+    fr: "Français",
+    ko: "한국어",
+    de: "Deutsch",
+    tr: "Türkçe",
+    ru: "Русский"
+  };
+
+  if (!button || !menu) return;
+
+  function closeMenu() {
+    menu.hidden = true;
+    button.setAttribute("aria-expanded", "false");
+  }
+
+  function setLanguage(lang) {
+    const dictionary = translations[lang] || translations.es;
+
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-i18n]").forEach((element) => {
+      const key = element.dataset.i18n;
+
+      if (Object.prototype.hasOwnProperty.call(dictionary, key)) {
+        element.innerHTML = dictionary[key];
+      }
+    });
+
+    document.title = {
+      es: "EBRO Interactive Entertainment | Tu historia. Nuestro universo.",
+      en: "EBRO Interactive Entertainment | Your Story. Our Universe.",
+      fr: "EBRO Interactive Entertainment | Votre histoire. Notre univers.",
+      ko: "EBRO Interactive Entertainment | 당신의 이야기. 우리의 우주.",
+      de: "EBRO Interactive Entertainment | Deine Geschichte. Unser Universum.",
+      tr: "EBRO Interactive Entertainment | Senin Hikâyen. Bizim Evrenimiz.",
+      ru: "EBRO Interactive Entertainment | Твоя история. Наша вселенная."
+    }[lang];
+
+    menu.setAttribute(
+      "aria-label",
+      dictionary.language_menu_label || "Choose a language"
+    );
+
+    button.textContent = "🌐 " + lang.toUpperCase() + " ▾";
+
+    try {
+      localStorage.setItem("ebro-language", lang);
+    } catch (error) {}
+
+    document.dispatchEvent(
+      new CustomEvent("ebro:languagechange", {
+        detail: {
+          language: lang,
+          name: languageNames[lang]
+        }
+      })
+    );
+
+    closeMenu();
+  }
+
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    const willOpen = menu.hidden;
+    menu.hidden = !willOpen;
+
+    button.setAttribute("aria-expanded", String(willOpen));
+  });
+
+  menu.querySelectorAll("[data-lang]").forEach((item) => {
+    item.addEventListener("click", () => {
+      setLanguage(item.dataset.lang);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".language-picker")) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+      button.focus();
+    }
+  });
+
+  let savedLanguage = null;
+
+  try {
+    savedLanguage = localStorage.getItem("ebro-language");
+  } catch (error) {}
+
+  function detectBrowserLanguage() {
+    const browserLanguages =
+      navigator.languages && navigator.languages.length
+        ? navigator.languages
+        : [navigator.language || "es"];
+
+    for (const browserLanguage of browserLanguages) {
+      const code = String(browserLanguage)
+        .toLowerCase()
+        .split(/[-_]/)[0];
+
+      if (Object.prototype.hasOwnProperty.call(translations, code)) {
+        return code;
+      }
+    }
+
+    return "es";
+  }
+
+  const initialLanguage =
+    savedLanguage &&
+    Object.prototype.hasOwnProperty.call(translations, savedLanguage)
+      ? savedLanguage
+      : detectBrowserLanguage();
+
+  setLanguage(initialLanguage);
+})();
+</script>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
